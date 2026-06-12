@@ -163,7 +163,8 @@ function select(id){selected=nodeBy(id);if(!selected)return;
   <span class="pill">${escapeHtml(selected.constellation_name||(selected.tags&&selected.tags[0])||'未分類')}</span>
   <h2>${escapeHtml(selected.name)}の${STAR_TERM}</h2>${constellation}${reply}
   <p class="body">${escapeHtml(selected.body)}</p>
-  <div class="cmd"><span>LINEで応える：返信:${escapeHtml(selected.id)} あなたの言葉</span><button id="copycmd">コピー</button></div>`;
+  <p class="hint">気づきが生まれたら、そのまま公式LINEに送るだけで宇宙に反映されます。特定の星に応えたい時だけ、下の返信用テキストを使ってください。</p>
+  <div class="cmd"><span>この星に応える時だけ：返信:${escapeHtml(selected.id)} あなたの言葉</span><button id="copycmd">コピー</button></div>`;
  detail.classList.add('show');
  detail.querySelector('.close').onclick=()=>{selected=null;detail.classList.remove('show')};
  const cp=detail.querySelector('#copycmd');
