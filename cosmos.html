@@ -151,6 +151,8 @@ function render(){ctx.clearRect(0,0,W,H);
   el.classList.toggle('active',!!(selected&&selected.id===n.id));
   if(!visible(n))return;
   el.style.left=s.x+'px';el.style.top=s.y+'px';
+  const tagEl=el.querySelector('.tag');
+  if(tagEl)tagEl.textContent=filter!=='all'&&(n.tags||[]).includes(filter)?filter:((n.tags&&n.tags[0])||'未分類');
   el.style.opacity=labelVisible?Math.min(1,.55+s.scale*.34):0;
   const isSel=selected&&selected.id===n.id;
   drawStar(s.x,s.y,Math.max(2.2,4.6*s.scale)*(isSel?1.5:1),color(n),isSel||p.z>.72)});
