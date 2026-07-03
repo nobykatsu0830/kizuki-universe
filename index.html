@@ -80,7 +80,22 @@ a{color:var(--teal)}
 .q-label{color:var(--gold);letter-spacing:.34em;font-size:11.5px;font-weight:700}
 .question-card .q{font-family:var(--serif);font-size:clamp(19px,3vw,24px);line-height:2;color:#f6f3e7;margin:12px 0 4px}
 .const-card h3{color:var(--gold-soft);margin:0 0 4px}
+.const-lead{margin:6px 0 8px;color:var(--dim);font-size:.9em}
+.const-bullets{margin:8px 0 0;padding-left:0;list-style:none;display:flex;flex-direction:column;gap:8px}
+.const-bullets li{font-size:.88em;line-height:1.6;padding:8px 10px;background:rgba(255,255,255,.04);border-left:2px solid var(--gold);border-radius:0 6px 6px 0}
+.const-who{display:inline-block;font-size:.8em;color:var(--gold);margin-right:6px;font-weight:600}
 .const-week{font-size:12px;color:var(--dim);letter-spacing:.14em}
+.relay{margin:28px 0 8px;padding:28px 28px 22px;border:1px solid rgba(238,201,111,.28);border-radius:22px;background:linear-gradient(168deg,rgba(238,201,111,.08),rgba(159,217,201,.035));box-shadow:0 18px 50px rgba(0,0,0,.34),inset 0 0 80px rgba(238,201,111,.05)}
+.relay h2{margin:0 0 4px}
+.relay-note{margin:0 0 20px;color:var(--dim);font-size:13.5px;letter-spacing:.05em;line-height:1.85}
+.relay-list{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:2px}
+.relay-item{display:flex;gap:14px;align-items:flex-start;padding:14px 4px;border-bottom:1px solid rgba(255,255,255,.06)}
+.relay-item:last-child{border-bottom:0}
+.relay-mark{color:var(--gold-soft);font-size:18px;line-height:1.55;text-shadow:0 0 14px rgba(255,233,176,.75);flex:none;animation:pulse 3.4s ease-in-out infinite}
+.relay-body{flex:1;min-width:0}
+.relay-line{margin:0;font-family:var(--serif);font-size:16.5px;color:#f6f3e7;letter-spacing:.04em;line-height:1.7}
+.relay-sub{margin:5px 0 0;font-size:13.5px;color:var(--dim);line-height:1.9}
+.star-relay{margin:10px 0 2px;font-size:12.5px;color:var(--gold);letter-spacing:.05em;opacity:.92;line-height:1.6}
 .empty{text-align:center;padding:64px 20px}
 .empty .star-dot{margin:0 auto 20px;width:14px;height:14px}
 .empty p{font-family:var(--serif);color:var(--dim);letter-spacing:.1em;line-height:2.3;margin:0}
@@ -91,8 +106,33 @@ label{font-size:13.5px;color:var(--dim);letter-spacing:.08em}
 .pre{white-space:pre-wrap;background:rgba(0,0,0,.3);border:1px solid var(--line);border-radius:14px;padding:14px;font-size:14px}
 .small{color:var(--dim);font-size:13px}
 details>summary{cursor:pointer;color:var(--gold-soft)}
+.joincta{margin-top:64px;text-align:center;padding:44px 28px;border-color:rgba(238,201,111,.32);background:linear-gradient(168deg,rgba(238,201,111,.1),rgba(238,201,111,.025))}
+.joincta .kicker{display:block;margin-bottom:10px}
+.joincta h2{margin:0 0 12px;border:0}
+.joincta h2::before{content:none}
+.joincta .lead{margin:0 auto 26px}
+.joincta .cta{margin:0;justify-content:center}
 .cosmos-footer{margin-top:72px;text-align:center;color:var(--dim);font-size:13px;letter-spacing:.08em}
 .cosmos-footer a{color:rgba(255,255,255,.32);text-decoration:none;font-size:12px}
+.theme-nav{margin:34px 0 6px}
+.chip-row{display:flex;flex-wrap:wrap;gap:8px}
+.chip-link{display:inline-flex;align-items:center;gap:6px;min-height:34px;padding:3px 15px;border-radius:999px;border:1px solid var(--line);background:rgba(255,255,255,.05);color:var(--ink);font-size:13px;font-weight:700;text-decoration:none;letter-spacing:.04em;transition:.2s}
+.chip-link:hover{border-color:rgba(238,201,111,.5);color:var(--gold-soft)}
+.chip-link.active{background:linear-gradient(135deg,var(--gold),var(--gold-soft));color:#241a05;border-color:transparent}
+.chip-n{font-size:11px;opacity:.75}
+.star-resonance{margin:8px 0 2px;font-size:12.5px;color:var(--teal);letter-spacing:.05em;line-height:1.6}
+.q-origin{margin:2px 0 10px;font-size:12.5px;color:var(--dim);letter-spacing:.05em}
+.card-actions{display:flex;flex-wrap:wrap;gap:10px;margin-top:14px}
+.resonance{margin:30px 0}
+.link-list{list-style:none;margin:0;padding:0;display:grid;gap:10px}
+.link-item{background:rgba(255,255,255,.045);border:1px solid var(--line);border-radius:16px;padding:14px 16px}
+.link-item a{display:block;color:var(--ink);text-decoration:none}
+.link-item a:hover .link-who{color:var(--gold-soft)}
+.link-who{display:block;font-family:var(--serif);color:var(--gold);font-size:13.5px;letter-spacing:.06em;margin-bottom:4px}
+.link-body{display:block;font-size:14px;color:#d8d5c9;line-height:1.8}
+.link-reason{margin:8px 0 0;font-size:12.5px;color:var(--teal);letter-spacing:.04em}
+.star-single .star-body{font-family:var(--serif);font-size:17px;line-height:2.1}
+.voices-sec{margin:30px 0}
 :focus-visible{outline:2px solid var(--gold);outline-offset:3px}
 @media (prefers-reduced-motion: reduce){*,*::before,*::after{animation:none!important;transition:none!important}html{scroll-behavior:auto}}
 @media(max-width:640px){.wrap{padding:16px 15px 48px}.card{padding:20px 18px}.stat{min-width:118px;padding:14px 16px}.hero{padding:44px 0 20px}}
@@ -108,107 +148,52 @@ details>summary{cursor:pointer;color:var(--gold-soft)}
       <h1>気づきの宇宙</h1>
       <p class="tagline">あなたの気づきが、星になる。</p>
       <p class="lead">講座で生まれた気づき・感想・問いがこの宇宙にアップされ、ひとつひとつが星として灯ります。星と星はAIによって結ばれて星座になり、そこから次の問いが生まれていきます。</p>
-      <div class="cta"><a class="btn" href="./cosmos.html">宇宙を旅する</a><a class="btn ghost" href="./questions.html">問いを見る</a><a class="btn ghost" href="./questions.html#send">星を送る</a></div>
+      <div class="cta"><a class="btn" href="./cosmos.html">宇宙を旅する</a><a class="btn ghost" href="./questions.html#send">この宇宙に星を送る</a></div>
       <div class="stats">
-        <div class="card stat"><b>12</b><span>星</span></div>
-        <div class="card stat"><b>8</b><span>星座</span></div>
-        <div class="card stat"><b>3</b><span>寄せられた声</span></div>
+        <div class="card stat"><b>3</b><span>星</span></div>
+        <div class="card stat"><b>5</b><span>星座</span></div>
+        <div class="card stat"><b>4</b><span>返信の声</span></div>
       </div>
     </header>
-    <section class="card question-card"><div class="q-label">今週の問い</div><p class="q">身体の反応は、どんな気づきを教えてくれていますか。</p><a class="btn ghost small" href="./questions.html#send">この問いに星で応える</a></section>
-    <h2>いま生まれている星座</h2><div class="grid"><section class="card const-card"><h3>身体感覚の星座</h3><div class="const-week">2026-06-08 の週</div><p>身体感覚 / 気づき に関する星が 8 件つながりました。
-
-- 匿名参加者: 最初は「笑う練習」と聞いて少し恥ずかしかったのですが、声を出して笑っているうちに胸のあたりがゆるみました。終わったあと、理由がなくても安心していいんだと思えま…
-- Aさん: ジブリッシュで意味のない言葉を話した時、ちゃんと話さなきゃという力みが抜けました。普段どれだけ正しく見られようとしているかに気づきました。
-- Cさん: 仕事ではいつも頭で考えてばかりでしたが、今日のワークでは身体から先に気持ちが変わりました。笑いは感情を動かす入口なんだと実感しました。
-- Dさん: 笑っている途中で急に涙が出てきました。悲しいというより、ずっと我慢していたものがほどけた感じでした。笑いと涙が近いことに驚きました。
-- Hさん: みんなで同じリズムで手を叩いて笑うだけで、場に一体感が生まれました。言葉で説明するより前に、身体が「大丈夫」と感じていました。</p></section><section class="card const-card"><h3>安心の星座</h3><div class="const-week">2026-06-08 の週</div><p>安心 / 気づき に関する星が 7 件つながりました。
-
-- 匿名参加者: 最初は「笑う練習」と聞いて少し恥ずかしかったのですが、声を出して笑っているうちに胸のあたりがゆるみました。終わったあと、理由がなくても安心していいんだと思えま…
-- Bさん: ペアで笑い合ったあと、相手を笑わせようとしなくても、ただ一緒にいるだけで場があたたかくなる感じがありました。人との距離が少し近くなりました。
-- Eさん: 「笑えない自分もそのままでいい」と言われたことで、逆に少し笑えました。無理にポジティブにならなくていいという安心感が大きかったです。
-- Hさん: みんなで同じリズムで手を叩いて笑うだけで、場に一体感が生まれました。言葉で説明するより前に、身体が「大丈夫」と感じていました。
-- Jさん: 笑いながら「自分はこんな顔をしても大丈夫なんだ」と思いました。人からどう見られるかを気にする癖が少しゆるみました。</p></section><section class="card const-card"><h3>自己受容の星座</h3><div class="const-week">2026-06-08 の週</div><p>自己受容 / 気づき に関する星が 7 件つながりました。
-
-- Aさん: ジブリッシュで意味のない言葉を話した時、ちゃんと話さなきゃという力みが抜けました。普段どれだけ正しく見られようとしているかに気づきました。
-- Eさん: 「笑えない自分もそのままでいい」と言われたことで、逆に少し笑えました。無理にポジティブにならなくていいという安心感が大きかったです。
-- Fさん: でたらめな動きをしている時、子どもの頃の感覚を思い出しました。ちゃんとしている大人の鎧を、少しだけ脱げた気がします。
-- Gさん: ラフターヨガは健康法だと思っていましたが、今日は自分の感情との付き合い方を学んだ感じがしました。笑いが自己理解につながるのが面白かったです。
-- Jさん: 笑いながら「自分はこんな顔をしても大丈夫なんだ」と思いました。人からどう見られるかを気にする癖が少しゆるみました。</p></section></div>
+    <section class="card question-card"><div class="q-label">星々から生まれた問い</div><p class="q">笑いや共感に触れたとき、私たちはどんな自分になりたいという感覚を受け取っているのだろう？</p><p class="q-origin">三家庭よもぎ村・ジャイアント花三郎・LINE参加者さんの星から生まれました</p><a class="btn ghost small" href="./questions.html#send">この問いに、あなたの星を灯す</a></section><section class="card question-card"><div class="q-label">星々から生まれた問い</div><p class="q">相手や時代の変化を前にしたとき、すぐに動かそうとする前に、自分の内側では何が起きているのだろう？</p><p class="q-origin">大久保信克・事務局・Bさん・Aさんさんの星から生まれました</p><a class="btn ghost small" href="./questions.html#send">この問いに、あなたの星を灯す</a></section>
+    <section class="relay"><h2>宇宙の動き</h2><p class="relay-note">あなたのアウトプットが、AIによって星座に編まれ、生かされていく動きです。</p><ul class="relay-list"><li class="relay-item"><span class="relay-mark">✦</span><div class="relay-body"><p class="relay-line">星々から問いが生まれました</p><p class="relay-sub">「笑いや共感に触れたとき、私たちはどんな自分になりたいという感覚を受け取っているのだろう？」（三家庭よもぎ村・ジャイアント花三郎・LINE参加者の星から）</p></div></li><li class="relay-item"><span class="relay-mark">✦</span><div class="relay-body"><p class="relay-line">星々から問いが生まれました</p><p class="relay-sub">「相手や時代の変化を前にしたとき、すぐに動かそうとする前に、自分の内側では何が起きているのだろう？」（大久保信克・事務局・Bさん・Aさんの星から）</p></div></li><li class="relay-item"><span class="relay-mark">✧</span><div class="relay-body"><p class="relay-line">5組の星のあいだに光の糸が張られました</p><p class="relay-sub">宇宙の織り手が、響き合う星同士を結びました。</p></div></li><li class="relay-item"><span class="relay-mark">✦</span><div class="relay-body"><p class="relay-line">「つながりの星座」が生まれました</p><p class="relay-sub">ジャイアント花三郎・三家庭よもぎ村 の2つの星が響き合って、新しい星座になりました。</p></div></li><li class="relay-item"><span class="relay-mark">✦</span><div class="relay-body"><p class="relay-line">「自己理解の星座」が生まれました</p><p class="relay-sub">Aさん・事務局・三家庭よもぎ村 の3つの星が響き合って、新しい星座になりました。</p></div></li><li class="relay-item"><span class="relay-mark">✦</span><div class="relay-body"><p class="relay-line">「待つの星座」が生まれました</p><p class="relay-sub">Aさん・Bさん・事務局 の3つの星が響き合って、新しい星座になりました。</p></div></li></ul></section>
+    <h2>いま生まれている星座</h2><div class="grid"><section class="card const-card"><h3>つながりの星座</h3><div class="const-week">2026-06-29 の週</div><p class="const-lead">つながり / 気づき に関する星が 2 件つながりました。</p><ul class="const-bullets"><li><span class="const-who">ジャイアント花三郎</span>それはごもっともじゃ！</li><li><span class="const-who">三家庭よもぎ村</span>私も同感です！そんな男になりたい！</li></ul></section><section class="card const-card"><h3>自己理解の星座</h3><div class="const-week">2026-06-29 の週</div><p class="const-lead">自己理解 / 気づき に関する星が 3 件つながりました。</p><ul class="const-bullets"><li><span class="const-who">Aさん</span>7回目を終えて、待つことが苦手だと気づきました。焦って相手を変えようとしていたかもしれません。</li><li><span class="const-who">事務局</span>ここはとても大切な気づきです。待つことは何もしないことではなく、自分の内側を整える時間かもしれません。</li><li><span class="const-who">三家庭よもぎ村</span>私も同感です！そんな男になりたい！</li></ul></section><section class="card const-card"><h3>待つの星座</h3><div class="const-week">2026-06-29 の週</div><p class="const-lead">待つ / 気づき に関する星が 3 件つながりました。</p><ul class="const-bullets"><li><span class="const-who">Aさん</span>7回目を終えて、待つことが苦手だと気づきました。焦って相手を変えようとしていたかもしれません。</li><li><span class="const-who">Bさん</span>私も同じです。待つ時間に身体がそわそわする感じがあります。</li><li><span class="const-who">事務局</span>ここはとても大切な気づきです。待つことは何もしないことではなく、自分の内側を整える時間かもしれません。</li></ul></section></div>
+    <section class="theme-nav"><h2>テーマでたどる</h2><div class="chip-row"><a class="chip-link active" href="./">すべて</a><a class="chip-link" href="./">待つ<span class="chip-n">1</span></a><a class="chip-link" href="./">時代感覚<span class="chip-n">1</span></a><a class="chip-link" href="./">相手を変えようとする<span class="chip-n">1</span></a><a class="chip-link" href="./">笑い<span class="chip-n">1</span></a><a class="chip-link" href="./">自己理解<span class="chip-n">1</span></a></div></section>
     <h2>みんなの星</h2>
     <article class="card star-card">
-          <header><span class="star-dot"></span><span class="star-who">Kさん</span><span class="star-kind">laughter-demo</span></header>
-          <p class="star-body">講座後に家族と話した時、いつもより少しやわらかく聞けました。笑いで自分が整うと、相手への反応も変わるのだと思いました。</p>
-          <div class="tags"><span class="tag">笑い</span><span class="tag">自己受容</span><span class="tag">つながり</span><span class="tag">相手を変えようとする</span></div>
+          <header><span class="star-dot"></span><span class="star-who">大久保信克</span></header>
+          <p class="star-body">柳田國男先生がもし現代に来ていたら、どんなことを感じられて、どんなふうに生きていらっしゃるのか嘆いているんだろうかとにかく現代と昔との違いに驚きました</p>
+          <div class="tags"><span class="tag">時代感覚</span></div>
           
-          <a class="btn ghost small" href="./questions.html#send">この星に声を寄せる</a>
-        </article><article class="card star-card">
-          <header><span class="star-dot"></span><span class="star-who">Jさん</span><span class="star-kind">laughter-demo</span></header>
-          <p class="star-body">笑いながら「自分はこんな顔をしても大丈夫なんだ」と思いました。人からどう見られるかを気にする癖が少しゆるみました。</p>
-          <div class="tags"><span class="tag">笑い</span><span class="tag">身体感覚</span><span class="tag">安心</span><span class="tag">自己受容</span></div>
           
-          <a class="btn ghost small" href="./questions.html#send">この星に声を寄せる</a>
+          <div class="voices"><div class="voice"><span class="voice-who">ジャイアント花三郎</span><p>それはごもっともじゃ！</p></div></div>
+          <div class="card-actions"><a class="btn ghost small" href="./questions.html#send">この星をひらく</a>
+          <a class="btn ghost small" href="./questions.html#send">声を寄せる</a></div>
         </article><article class="card star-card">
-          <header><span class="star-dot"></span><span class="star-who">Iさん</span><span class="star-kind">laughter-demo</span></header>
-          <p class="star-body">終わった後、呼吸が深くなっていました。緊張していた肩も下がっていて、普段どれだけ無意識に力が入っているかに気づきました。</p>
-          <div class="tags"><span class="tag">身体感覚</span></div>
+          <header><span class="star-dot"></span><span class="star-who">LINE参加者</span></header>
+          <p class="star-body">笑いはすべての人に与えられた神様からの贈り物だと思いました</p>
+          <div class="tags"><span class="tag">笑い</span></div>
           
-          <a class="btn ghost small" href="./questions.html#send">この星に声を寄せる</a>
-        </article><article class="card star-card">
-          <header><span class="star-dot"></span><span class="star-who">Hさん</span><span class="star-kind">laughter-demo</span></header>
-          <p class="star-body">みんなで同じリズムで手を叩いて笑うだけで、場に一体感が生まれました。言葉で説明するより前に、身体が「大丈夫」と感じていました。</p>
-          <div class="tags"><span class="tag">笑い</span><span class="tag">身体感覚</span><span class="tag">安心</span><span class="tag">つながり</span></div>
-          <div class="voices"><div class="voice"><span class="voice-who">Mさん</span><p>身体が先に大丈夫を感じる、という表現がぴったりでした。頭ではなく場全体で安心した感じがありました。</p></div></div>
-          <a class="btn ghost small" href="./questions.html#send">この星に声を寄せる</a>
-        </article><article class="card star-card">
-          <header><span class="star-dot"></span><span class="star-who">Gさん</span><span class="star-kind">laughter-demo</span></header>
-          <p class="star-body">ラフターヨガは健康法だと思っていましたが、今日は自分の感情との付き合い方を学んだ感じがしました。笑いが自己理解につながるのが面白かったです。</p>
-          <div class="tags"><span class="tag">笑い</span><span class="tag">感情の解放</span><span class="tag">自己受容</span></div>
+          <div class="star-resonance">✧ 三家庭よもぎ村の星と響き合っています</div>
           
-          <a class="btn ghost small" href="./questions.html#send">この星に声を寄せる</a>
+          <div class="card-actions"><a class="btn ghost small" href="./questions.html#send">この星をひらく</a>
+          <a class="btn ghost small" href="./questions.html#send">声を寄せる</a></div>
         </article><article class="card star-card">
-          <header><span class="star-dot"></span><span class="star-who">Fさん</span><span class="star-kind">laughter-demo</span></header>
-          <p class="star-body">でたらめな動きをしている時、子どもの頃の感覚を思い出しました。ちゃんとしている大人の鎧を、少しだけ脱げた気がします。</p>
-          <div class="tags"><span class="tag">笑い</span><span class="tag">自己受容</span></div>
-          
-          <a class="btn ghost small" href="./questions.html#send">この星に声を寄せる</a>
-        </article><article class="card star-card">
-          <header><span class="star-dot"></span><span class="star-who">Eさん</span><span class="star-kind">laughter-demo</span></header>
-          <p class="star-body">「笑えない自分もそのままでいい」と言われたことで、逆に少し笑えました。無理にポジティブにならなくていいという安心感が大きかったです。</p>
-          <div class="tags"><span class="tag">笑い</span><span class="tag">安心</span><span class="tag">自己受容</span></div>
-          
-          <a class="btn ghost small" href="./questions.html#send">この星に声を寄せる</a>
-        </article><article class="card star-card">
-          <header><span class="star-dot"></span><span class="star-who">Dさん</span><span class="star-kind">laughter-demo</span></header>
-          <p class="star-body">笑っている途中で急に涙が出てきました。悲しいというより、ずっと我慢していたものがほどけた感じでした。笑いと涙が近いことに驚きました。</p>
-          <div class="tags"><span class="tag">笑い</span><span class="tag">身体感覚</span><span class="tag">感情の解放</span><span class="tag">待つ</span></div>
-          <div class="voices"><div class="voice"><span class="voice-who">匿名参加者</span><p>私も涙が出ました。笑っているのに泣けるのが不思議でしたが、同じ感想を見て安心しました。</p></div></div>
-          <a class="btn ghost small" href="./questions.html#send">この星に声を寄せる</a>
-        </article><article class="card star-card">
-          <header><span class="star-dot"></span><span class="star-who">Cさん</span><span class="star-kind">laughter-demo</span></header>
-          <p class="star-body">仕事ではいつも頭で考えてばかりでしたが、今日のワークでは身体から先に気持ちが変わりました。笑いは感情を動かす入口なんだと実感しました。</p>
-          <div class="tags"><span class="tag">笑い</span><span class="tag">身体感覚</span><span class="tag">感情の解放</span></div>
-          
-          <a class="btn ghost small" href="./questions.html#send">この星に声を寄せる</a>
-        </article><article class="card star-card">
-          <header><span class="star-dot"></span><span class="star-who">Bさん</span><span class="star-kind">laughter-demo</span></header>
-          <p class="star-body">ペアで笑い合ったあと、相手を笑わせようとしなくても、ただ一緒にいるだけで場があたたかくなる感じがありました。人との距離が少し近くなりました。</p>
-          <div class="tags"><span class="tag">笑い</span><span class="tag">安心</span><span class="tag">つながり</span><span class="tag">相手を変えようとする</span></div>
-          
-          <a class="btn ghost small" href="./questions.html#send">この星に声を寄せる</a>
-        </article><article class="card star-card">
-          <header><span class="star-dot"></span><span class="star-who">Aさん</span><span class="star-kind">laughter-demo</span></header>
-          <p class="star-body">ジブリッシュで意味のない言葉を話した時、ちゃんと話さなきゃという力みが抜けました。普段どれだけ正しく見られようとしているかに気づきました。</p>
-          <div class="tags"><span class="tag">ジブリッシュ</span><span class="tag">身体感覚</span><span class="tag">自己受容</span></div>
-          <div class="voices"><div class="voice"><span class="voice-who">Lさん</span><p>「正しく見られようとしている」にすごく共感しました。ジブリッシュはその枠を外す練習みたいでした。</p></div></div>
-          <a class="btn ghost small" href="./questions.html#send">この星に声を寄せる</a>
-        </article><article class="card star-card">
-          <header><span class="star-dot"></span><span class="star-who">匿名参加者</span><span class="star-kind">laughter-demo</span></header>
-          <p class="star-body">最初は「笑う練習」と聞いて少し恥ずかしかったのですが、声を出して笑っているうちに胸のあたりがゆるみました。終わったあと、理由がなくても安心していいんだと思えました。</p>
-          <div class="tags"><span class="tag">笑い</span><span class="tag">身体感覚</span><span class="tag">安心</span></div>
-          
-          <a class="btn ghost small" href="./questions.html#send">この星に声を寄せる</a>
+          <header><span class="star-dot"></span><span class="star-who">Aさん</span></header>
+          <p class="star-body">7回目を終えて、待つことが苦手だと気づきました。焦って相手を変えようとしていたかもしれません。</p>
+          <div class="tags"><span class="tag">待つ</span><span class="tag">相手を変えようとする</span><span class="tag">自己理解</span></div>
+          <div class="star-relay">☄ この星は「待つの星座」につながっています</div>
+          <div class="star-resonance">✧ Bさん・事務局の星と響き合っています</div>
+          <div class="voices"><div class="voice"><span class="voice-who">Bさん</span><p>私も同じです。待つ時間に身体がそわそわする感じがあります。</p></div><div class="voice"><span class="voice-who">事務局</span><p>ここはとても大切な気づきです。待つことは何もしないことではなく、自分の内側を整える時間かもしれません。</p></div></div>
+          <div class="card-actions"><a class="btn ghost small" href="./questions.html#send">この星をひらく</a>
+          <a class="btn ghost small" href="./questions.html#send">声を寄せる</a></div>
         </article>
+    <section class="card joincta">
+      <span class="kicker">Join the Universe</span>
+      <h2>あなたの気づきも、ひとつの星になる</h2>
+      <p class="lead">講座で生まれた気づき・感想・問いは、公式LINEに送るだけでこの宇宙の星になります。</p>
+      <div class="cta"><a class="btn" href="./questions.html#send">この宇宙に星を送る</a><a class="btn ghost" href="./cosmos.html">まず宇宙を旅する</a></div>
+    </section>
     </main>
 <footer class="cosmos-footer"><p>アウトプットした人のおかげで、この宇宙は発展していきます。</p><a href="./questions.html#send">管理</a></footer>
 </div></body></html>

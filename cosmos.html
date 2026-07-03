@@ -60,9 +60,26 @@ html,body{height:100%;margin:0;overflow:hidden;font-family:var(--sans);color:var
 .detail h2{font-family:var(--serif);font-weight:600;font-size:21px;margin:0 0 8px;color:#f6f3e7;letter-spacing:.06em}
 .detail .meta{font-size:12px;color:var(--dim);margin:0 0 6px}
 .detail .body{font-family:var(--serif);margin:0;color:#efece0;line-height:2;font-size:15px;max-height:34vh;overflow:auto}
+.detail .voice-link{display:inline-flex;align-items:center;justify-content:center;margin-top:16px;padding:9px 20px;border-radius:999px;border:1px solid rgba(238,201,111,.5);background:rgba(255,255,255,.04);color:var(--gold-soft);font-size:13px;font-weight:700;letter-spacing:.06em;text-decoration:none;transition:.25s}
+.detail .voice-link:hover{background:linear-gradient(135deg,var(--gold),var(--gold-soft));color:#241a05;border-color:transparent}
+.rel{margin-top:14px;border-top:1px solid var(--line);padding-top:12px}
+.rel-h{display:block;font-family:var(--serif);font-weight:600;color:#b9e3d6;font-size:12px;letter-spacing:.16em;margin-bottom:8px}
+.rel-item{display:block;width:100%;text-align:left;appearance:none;background:rgba(159,217,201,.07);border:1px solid rgba(159,217,201,.22);border-radius:12px;padding:9px 12px;margin-bottom:7px;cursor:pointer;font-family:var(--sans);transition:.2s}
+.rel-item:hover{border-color:rgba(159,217,201,.55);background:rgba(159,217,201,.13)}
+.rel-who{display:block;color:#cdeee2;font-size:12.5px;font-weight:700;letter-spacing:.05em}
+.rel-reason{display:block;color:var(--dim);font-size:11.5px;margin-top:3px;line-height:1.6}
+.detail-actions{display:flex;gap:8px;margin-top:14px;flex-wrap:wrap}
+.btn-mini{display:inline-flex;align-items:center;justify-content:center;padding:8px 16px;border-radius:999px;border:1px solid rgba(238,201,111,.5);background:rgba(255,255,255,.04);color:var(--gold-soft);font-size:12.5px;font-weight:700;letter-spacing:.05em;text-decoration:none;transition:.25s}
+.btn-mini:hover{background:linear-gradient(135deg,var(--gold),var(--gold-soft));color:#241a05;border-color:transparent}
 .cmd{display:flex;gap:8px;align-items:center;margin-top:14px;background:rgba(0,0,0,.35);border:1px solid var(--line);border-radius:12px;padding:9px 12px;font-size:12px;color:var(--gold-soft);word-break:break-all}
 .cmd button{flex:none;appearance:none;border:1px solid rgba(238,201,111,.5);background:none;color:var(--gold-soft);border-radius:999px;padding:4px 12px;font-size:11.5px;font-weight:700;cursor:pointer}
 .cmd button:hover{background:rgba(238,201,111,.15)}
+.cosmos-empty{position:fixed;inset:0;z-index:8;display:none;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:28px;pointer-events:none}
+.cosmos-empty.show{display:flex}
+.cosmos-empty .seed{width:14px;height:14px;border-radius:50%;background:var(--gold-soft);box-shadow:0 0 22px 5px rgba(255,233,176,.7);margin-bottom:28px;animation:epulse 3.6s ease-in-out infinite}
+@keyframes epulse{50%{box-shadow:0 0 32px 9px rgba(255,233,176,.95)}}
+.cosmos-empty p{font-family:var(--serif);font-size:clamp(17px,3.4vw,23px);line-height:2.25;color:var(--gold-soft);letter-spacing:.12em;margin:0 0 32px;text-shadow:0 0 30px rgba(238,201,111,.32);max-width:18em}
+.cosmos-empty .bn{pointer-events:auto}
 :focus-visible{outline:2px solid var(--gold);outline-offset:3px}
 @media (prefers-reduced-motion: reduce){*,*::before,*::after{animation:none!important;transition:none!important}}
 @media(max-width:680px){
@@ -77,30 +94,49 @@ html,body{height:100%;margin:0;overflow:hidden;font-family:var(--sans);color:var
 <div class="sky"></div><div class="stars"></div><div class="stars stars2"></div>
 <canvas id="stage"></canvas>
 <div class="labels" id="labels"></div>
+<div class="cosmos-empty" id="cosmosEmpty"><span class="seed"></span><p>この宇宙は、まだ夜の底にある。<br>最初のひとつぶの光を、あなたが灯す。</p><a class="bn gold" href="./questions.html#send">最初の星を送る</a></div>
 <header class="hud-brand glass"><a href="./">← 気づきの宇宙にもどる</a><h1>宇宙を旅する</h1><p class="hint">ドラッグで回す ・ ホイールでズーム ・ 星を選ぶ</p></header>
 <nav class="hud-nav glass"><a class="bn gold" href="./questions.html#send">星を送る</a></nav>
 <section class="dock glass"><h3>テーマでたどる</h3><p class="filter-status" id="filterStatus">すべての星を表示中</p><div class="chips" id="chips"><button class="chip active" data-tag="all">すべて</button></div></section>
 <div class="zoomers glass"><button id="zin" aria-label="ズームイン">＋</button><button id="zout" aria-label="ズームアウト">−</button></div>
 <aside class="detail glass" id="detail" aria-live="polite"></aside>
 <script>
-const nodes=[{"id": "e491f48fb546", "parent_id": null, "reply_to": null, "name": "匿名参加者", "body": "最初は「笑う練習」と聞いて少し恥ずかしかったのですが、声を出して笑っているうちに胸のあたりがゆるみました。終わったあと、理由がなくても安心していいんだと思えました。", "source": "laughter-demo", "tags": ["笑い", "身体感覚", "安心"], "star_kind": "insight", "visibility": "universe", "constellation_id": "d1de66eddbdb", "constellation_name": "笑いの星座", "lat": -50, "lon": -130}, {"id": "cf8c4de7faaa", "parent_id": null, "reply_to": null, "name": "Aさん", "body": "ジブリッシュで意味のない言葉を話した時、ちゃんと話さなきゃという力みが抜けました。普段どれだけ正しく見られようとしているかに気づきました。", "source": "laughter-demo", "tags": ["ジブリッシュ", "身体感覚", "自己受容"], "star_kind": "insight", "visibility": "universe", "constellation_id": "e1f52ed9f507", "constellation_name": "身体感覚の星座", "lat": -3, "lon": -47}, {"id": "4b3926d39171", "parent_id": null, "reply_to": null, "name": "Bさん", "body": "ペアで笑い合ったあと、相手を笑わせようとしなくても、ただ一緒にいるだけで場があたたかくなる感じがありました。人との距離が少し近くなりました。", "source": "laughter-demo", "tags": ["笑い", "安心", "つながり", "相手を変えようとする"], "star_kind": "impression", "visibility": "universe", "constellation_id": "d1de66eddbdb", "constellation_name": "笑いの星座", "lat": 44, "lon": 36}, {"id": "ddfd8a3ab1b8", "parent_id": null, "reply_to": null, "name": "Cさん", "body": "仕事ではいつも頭で考えてばかりでしたが、今日のワークでは身体から先に気持ちが変わりました。笑いは感情を動かす入口なんだと実感しました。", "source": "laughter-demo", "tags": ["笑い", "身体感覚", "感情の解放"], "star_kind": "situation", "visibility": "universe", "constellation_id": "d1de66eddbdb", "constellation_name": "笑いの星座", "lat": -9, "lon": 119}, {"id": "be3730506d94", "parent_id": null, "reply_to": null, "name": "Dさん", "body": "笑っている途中で急に涙が出てきました。悲しいというより、ずっと我慢していたものがほどけた感じでした。笑いと涙が近いことに驚きました。", "source": "laughter-demo", "tags": ["笑い", "身体感覚", "感情の解放", "待つ"], "star_kind": "impression", "visibility": "universe", "constellation_id": "d1de66eddbdb", "constellation_name": "笑いの星座", "lat": 38, "lon": -58}, {"id": "ca53563d3153", "parent_id": null, "reply_to": null, "name": "Eさん", "body": "「笑えない自分もそのままでいい」と言われたことで、逆に少し笑えました。無理にポジティブにならなくていいという安心感が大きかったです。", "source": "laughter-demo", "tags": ["笑い", "安心", "自己受容"], "star_kind": "insight", "visibility": "universe", "constellation_id": "d1de66eddbdb", "constellation_name": "笑いの星座", "lat": -15, "lon": 25}, {"id": "27f9d2b28d40", "parent_id": null, "reply_to": null, "name": "Fさん", "body": "でたらめな動きをしている時、子どもの頃の感覚を思い出しました。ちゃんとしている大人の鎧を、少しだけ脱げた気がします。", "source": "laughter-demo", "tags": ["笑い", "自己受容"], "star_kind": "situation", "visibility": "universe", "constellation_id": "d1de66eddbdb", "constellation_name": "笑いの星座", "lat": 32, "lon": 108}, {"id": "e0f6ae0efdd7", "parent_id": null, "reply_to": null, "name": "Gさん", "body": "ラフターヨガは健康法だと思っていましたが、今日は自分の感情との付き合い方を学んだ感じがしました。笑いが自己理解につながるのが面白かったです。", "source": "laughter-demo", "tags": ["笑い", "感情の解放", "自己受容"], "star_kind": "situation", "visibility": "universe", "constellation_id": "d1de66eddbdb", "constellation_name": "笑いの星座", "lat": -21, "lon": -69}, {"id": "0be27c1b4aae", "parent_id": null, "reply_to": null, "name": "Hさん", "body": "みんなで同じリズムで手を叩いて笑うだけで、場に一体感が生まれました。言葉で説明するより前に、身体が「大丈夫」と感じていました。", "source": "laughter-demo", "tags": ["笑い", "身体感覚", "安心", "つながり"], "star_kind": "situation", "visibility": "universe", "constellation_id": "d1de66eddbdb", "constellation_name": "笑いの星座", "lat": 26, "lon": 14}, {"id": "da819510ac57", "parent_id": null, "reply_to": null, "name": "Iさん", "body": "終わった後、呼吸が深くなっていました。緊張していた肩も下がっていて、普段どれだけ無意識に力が入っているかに気づきました。", "source": "laughter-demo", "tags": ["身体感覚"], "star_kind": "insight", "visibility": "universe", "constellation_id": "e1f52ed9f507", "constellation_name": "身体感覚の星座", "lat": -27, "lon": 97}, {"id": "221b006b8358", "parent_id": null, "reply_to": null, "name": "Jさん", "body": "笑いながら「自分はこんな顔をしても大丈夫なんだ」と思いました。人からどう見られるかを気にする癖が少しゆるみました。", "source": "laughter-demo", "tags": ["笑い", "身体感覚", "安心", "自己受容"], "star_kind": "question", "visibility": "universe", "constellation_id": "d1de66eddbdb", "constellation_name": "笑いの星座", "lat": 20, "lon": -80}, {"id": "06da6e82c418", "parent_id": null, "reply_to": null, "name": "Kさん", "body": "講座後に家族と話した時、いつもより少しやわらかく聞けました。笑いで自分が整うと、相手への反応も変わるのだと思いました。", "source": "laughter-demo", "tags": ["笑い", "自己受容", "つながり", "相手を変えようとする"], "star_kind": "impression", "visibility": "universe", "constellation_id": "d1de66eddbdb", "constellation_name": "笑いの星座", "lat": -33, "lon": 3}, {"id": "15478c99b81d", "parent_id": "be3730506d94", "reply_to": "Dさんの気づき", "name": "匿名参加者", "body": "私も涙が出ました。笑っているのに泣けるのが不思議でしたが、同じ感想を見て安心しました。", "source": "laughter-demo", "tags": ["笑い", "安心", "感情の解放"], "star_kind": "insight", "visibility": "universe", "constellation_id": "d1de66eddbdb", "constellation_name": "笑いの星座", "lat": 14, "lon": 86}, {"id": "eb1995c2690c", "parent_id": "cf8c4de7faaa", "reply_to": "Aさんの気づき", "name": "Lさん", "body": "「正しく見られようとしている」にすごく共感しました。ジブリッシュはその枠を外す練習みたいでした。", "source": "laughter-demo", "tags": ["ジブリッシュ", "自己受容"], "star_kind": "insight", "visibility": "universe", "constellation_id": "94ac6bb77c21", "constellation_name": "自己受容の星座", "lat": -39, "lon": -91}, {"id": "874047c82567", "parent_id": "0be27c1b4aae", "reply_to": "Hさんの気づき", "name": "Mさん", "body": "身体が先に大丈夫を感じる、という表現がぴったりでした。頭ではなく場全体で安心した感じがありました。", "source": "laughter-demo", "tags": ["身体感覚", "安心", "つながり"], "star_kind": "situation", "visibility": "universe", "constellation_id": "e1f52ed9f507", "constellation_name": "身体感覚の星座", "lat": 8, "lon": -8}];
+const nodes=[{"id": "22a34f2ffc3a", "parent_id": null, "reply_to": null, "name": "Aさん", "body": "7回目を終えて、待つことが苦手だと気づきました。焦って相手を変えようとしていたかもしれません。", "source": "seed", "tags": ["待つ", "相手を変えようとする", "自己理解"], "star_kind": "insight", "visibility": "universe", "constellation_id": "ee2d66a026ff", "constellation_name": "待つの星座", "lat": -50, "lon": -130}, {"id": "41d88da7e66d", "parent_id": "22a34f2ffc3a", "reply_to": "Aさんの気づき", "name": "Bさん", "body": "私も同じです。待つ時間に身体がそわそわする感じがあります。", "source": "seed", "tags": ["待つ", "身体感覚"], "star_kind": "impression", "visibility": "universe", "constellation_id": "ee2d66a026ff", "constellation_name": "待つの星座", "lat": -3, "lon": -47}, {"id": "14b7a3e9a5a0", "parent_id": "22a34f2ffc3a", "reply_to": "Aさんの気づき", "name": "事務局", "body": "ここはとても大切な気づきです。待つことは何もしないことではなく、自分の内側を整える時間かもしれません。", "source": "seed", "tags": ["待つ", "自己理解"], "star_kind": "question", "visibility": "universe", "constellation_id": "ee2d66a026ff", "constellation_name": "待つの星座", "lat": 44, "lon": 36}, {"id": "2aef502987d7", "parent_id": null, "reply_to": null, "name": "LINE参加者", "body": "笑いはすべての人に与えられた神様からの贈り物だと思いました", "source": "line", "tags": ["笑い"], "star_kind": "impression", "visibility": "universe", "constellation_id": null, "constellation_name": null, "lat": -9, "lon": 119}, {"id": "03ad356d7f97", "parent_id": null, "reply_to": null, "name": "大久保信克", "body": "柳田國男先生がもし現代に来ていたら、どんなことを感じられて、どんなふうに生きていらっしゃるのか嘆いているんだろうかとにかく現代と昔との違いに驚きました", "source": "line", "tags": ["時代感覚"], "star_kind": "impression", "visibility": "universe", "constellation_id": null, "constellation_name": null, "lat": 38, "lon": -58}, {"id": "08383f3c08fe", "parent_id": "03ad356d7f97", "reply_to": "大久保信克の気づき", "name": "ジャイアント花三郎", "body": "それはごもっともじゃ！", "source": "web", "tags": ["つながり"], "star_kind": "insight", "visibility": "universe", "constellation_id": "d8d6f142089c", "constellation_name": "つながりの星座", "lat": -15, "lon": 25}, {"id": "c3d10de5b640", "parent_id": "08383f3c08fe", "reply_to": "ジャイアント花三郎の気づき", "name": "三家庭よもぎ村", "body": "私も同感です！そんな男になりたい！", "source": "web", "tags": ["つながり", "自己理解"], "star_kind": "insight", "visibility": "universe", "constellation_id": "c1d2f5d0d86c", "constellation_name": "自己理解の星座", "lat": 32, "lon": 108}];
+const starLinks=[{"a": "22a34f2ffc3a", "b": "41d88da7e66d", "reason": "待つ夜に、そわそわする身体が同じ光を返す"}, {"a": "14b7a3e9a5a0", "b": "22a34f2ffc3a", "reason": "相手を待つ星と、内側を整える星が静かに重なる"}, {"a": "14b7a3e9a5a0", "b": "41d88da7e66d", "reason": "身体の揺れを、内なる静けさへ結ぶ細い光"}, {"a": "08383f3c08fe", "b": "c3d10de5b640", "reason": "同じうなずきが、夜空で近い星座になる"}, {"a": "2aef502987d7", "b": "c3d10de5b640", "reason": "笑いの贈り物が、なりたい自分を淡く照らす"}];
 const STAR_TERM="星";
+const BASE="";
 const canvas=document.getElementById('stage'),ctx=canvas.getContext('2d');
 const labels=document.getElementById('labels'),detail=document.getElementById('detail'),chips=document.getElementById('chips'),filterStatus=document.getElementById('filterStatus');
 const colors=['#ffe9b0','#9fd9c9','#bfaef2','#f2a9b8','#9cc6ff','#f0c869'];
 const reduceMotion=matchMedia('(prefers-reduced-motion: reduce)').matches;
-let W,H,dpr=1,R=270,rotX=-.18,rotY=-.55,zoom=1,drag=false,moved=false,last={x:0,y:0},selected=null,filter='all';
+let W,H,dpr=1,R=270,rotX=-.18,rotY=-.55,zoom=1,drag=false,moved=false,last={x:0,y:0},selected=null,filter='all',rafId=null;
 function escapeHtml(s){return String(s||'').replace(/[&<>"']/g,m=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[m]))}
 function color(n){return colors[Math.abs([...n.id].reduce((a,c)=>a+c.charCodeAt(0),0))%colors.length]}
 const allTags=[...new Set(nodes.flatMap(n=>n.tags&&n.tags.length?n.tags:['未分類']))];
 allTags.forEach(t=>{const b=document.createElement('button');b.className='chip';b.dataset.tag=t;b.textContent=t;b.onclick=()=>setFilter(t,b);chips.appendChild(b)});
 document.querySelector('.chip[data-tag="all"]').onclick=function(){setFilter('all',this)};
-function setFilter(t,b){filter=t;selected=null;detail.classList.remove('show');document.querySelectorAll('.chip').forEach(x=>x.classList.remove('active'));b.classList.add('active');const count=nodes.filter(n=>visible(n)).length;filterStatus.textContent=t==='all'?`すべての${STAR_TERM}を表示中（${count}件）`:`${t} の${STAR_TERM}だけを表示中（${count}件）`}
+function setFilter(t,b){
+  filter=t;selected=null;setActiveLabel(null);detail.classList.remove('show');
+  document.querySelectorAll('.chip').forEach(x=>x.classList.remove('active'));
+  b.classList.add('active');
+  // フィルタ外のラベルを即時に隠す（_shown状態も同期し、renderの差分更新と矛盾させない）
+  labelEls.forEach((el,id)=>{
+    const n=nodeMap.get(id);
+    if(!n||!visible(n)){el.classList.add('hidden');el.style.opacity='0';el._shown=false;}
+  });
+  const count=nodes.filter(n=>visible(n)).length;
+  filterStatus.textContent=t==='all'?`すべての${STAR_TERM}を表示中（${count}件）`:`${t} の${STAR_TERM}だけを表示中（${count}件）`;
+  // RAF ループが止まっていた場合に備えて強制再起動
+  if(rafId)cancelAnimationFrame(rafId);
+  rafId=requestAnimationFrame(render);
+}
 const labelEls=new Map();
 nodes.forEach(n=>{
  const el=document.createElement('article');el.className='label';el.style.setProperty('--c',color(n)+'55');
  el.innerHTML=`<b>${escapeHtml(n.name)}</b><p>${escapeHtml(n.body.slice(0,56))}${n.body.length>56?'…':''}</p><span class="tag">${escapeHtml((n.tags&&n.tags[0])||'未分類')}</span>`;
  el.onclick=()=>select(n.id);labels.appendChild(el);labelEls.set(n.id,el)});
+if(!nodes.length){document.getElementById('cosmosEmpty').classList.add('show');
+ document.querySelector('.dock').style.display='none';document.querySelector('.zoomers').style.display='none';}
 function resize(){dpr=Math.min(devicePixelRatio||1,2);W=innerWidth;H=innerHeight;canvas.width=W*dpr;canvas.height=H*dpr;canvas.style.width=W+'px';canvas.style.height=H+'px';ctx.setTransform(dpr,0,0,dpr,0,0);R=Math.min(W,H)*.32}
 resize();addEventListener('resize',resize);
 function sphere(n){const lat=(n.lat||0)*Math.PI/180,lon=(n.lon||0)*Math.PI/180;
@@ -111,15 +147,33 @@ function sphere(n){const lat=(n.lat||0)*Math.PI/180,lon=(n.lon||0)*Math.PI/180;
 function project(p){const per=1.95/(1.95-p.z*.48);return{x:W/2+p.x*R*zoom*per,y:H/2+14-p.y*R*zoom*per,scale:per,z:p.z}}
 function visible(n){return filter==='all'||(n.tags||[]).includes(filter)}
 filterStatus.textContent=`すべての${STAR_TERM}を表示中（${nodes.length}件）`;
-function nodeBy(id){return nodes.find(n=>n.id===id)}
+const nodeMap=new Map(nodes.map(n=>[n.id,n]));
+function nodeBy(id){return nodeMap.get(id)}
+function setActiveLabel(id){labelEls.forEach((el,k)=>el.classList.toggle('active',k===id))}
 const constellationGroups=[...nodes.reduce((m,n)=>{if(n.constellation_id){if(!m.has(n.constellation_id))m.set(n.constellation_id,[]);m.get(n.constellation_id).push(n)}return m},new Map()).values()];
+// 光の糸: 意味で響き合う星同士のリンク（存在する星だけ残す）
+const threads=starLinks.filter(l=>nodeMap.has(l.a)&&nodeMap.has(l.b));
+const threadsByStar=new Map();
+threads.forEach(l=>{
+ if(!threadsByStar.has(l.a))threadsByStar.set(l.a,[]);
+ if(!threadsByStar.has(l.b))threadsByStar.set(l.b,[]);
+ threadsByStar.get(l.a).push({id:l.b,reason:l.reason||''});
+ threadsByStar.get(l.b).push({id:l.a,reason:l.reason||''});
+});
+function drawThread(a,b,active){const pa=a&&a._s,pb=b&&b._s;if(!pa||!pb)return;
+ ctx.save();ctx.setLineDash(active?[]:[3,5]);
+ const g=ctx.createLinearGradient(pa.x,pa.y,pb.x,pb.y);
+ if(active){g.addColorStop(0,'rgba(159,217,201,.95)');g.addColorStop(1,'rgba(191,174,242,.8)');ctx.shadowBlur=9;ctx.shadowColor='rgba(159,217,201,.75)'}
+ else{g.addColorStop(0,'rgba(159,217,201,.28)');g.addColorStop(1,'rgba(191,174,242,.18)')}
+ ctx.beginPath();ctx.moveTo(pa.x,pa.y);ctx.lineTo(pb.x,pb.y);ctx.strokeStyle=g;ctx.lineWidth=active?1.6:.9;ctx.stroke();
+ ctx.restore();ctx.shadowBlur=0}
 function drawCore(){const cx=W/2,cy=H/2+14,rr=R*zoom;
  let g=ctx.createRadialGradient(cx,cy,rr*.02,cx,cy,rr*1.06);
  g.addColorStop(0,'rgba(160,200,255,.14)');g.addColorStop(.55,'rgba(60,90,180,.07)');g.addColorStop(1,'rgba(0,0,0,0)');
  ctx.fillStyle=g;ctx.beginPath();ctx.arc(cx,cy,rr*1.06,0,Math.PI*2);ctx.fill();
  ctx.strokeStyle='rgba(160,200,255,.07)';ctx.lineWidth=1;
  for(let i=-60;i<=60;i+=30){ctx.beginPath();ctx.ellipse(cx,cy,rr,Math.abs(rr*Math.cos(i*Math.PI/180)),0,0,Math.PI*2);ctx.stroke()}}
-function drawLine(a,b,active){const pa=project(sphere(a)),pb=project(sphere(b));
+function drawLineP(a,b,active){const pa=a&&a._s,pb=b&&b._s;if(!pa||!pb)return;
  const g=ctx.createLinearGradient(pa.x,pa.y,pb.x,pb.y);
  if(active){g.addColorStop(0,'rgba(238,201,111,.95)');g.addColorStop(1,'rgba(255,233,176,.6)')}
  else{g.addColorStop(0,'rgba(255,255,255,.16)');g.addColorStop(1,'rgba(255,255,255,.08)')}
@@ -133,53 +187,72 @@ function drawStar(x,y,r,c,bright){
  ctx.fillStyle='#fff';ctx.beginPath();ctx.arc(x,y,Math.max(1.4,r*.62),0,Math.PI*2);ctx.fill();
  if(bright){ctx.strokeStyle=c;ctx.lineWidth=1;ctx.globalAlpha=.85;
   ctx.beginPath();ctx.moveTo(x-r*5,y);ctx.lineTo(x+r*5,y);ctx.moveTo(x,y-r*5);ctx.lineTo(x,y+r*5);ctx.stroke();ctx.globalAlpha=1}}
+const order=nodes.slice();
 function render(){ctx.clearRect(0,0,W,H);
  if(!drag&&!reduceMotion)rotY+=.0012;
  drawCore();
+ // 1フレームにつき1回だけ球面→投影を計算し、ノードにキャッシュする
+ for(let i=0;i<nodes.length;i++){const n=nodes[i];n._p=sphere(n);n._s=project(n._p);}
+ // 光の糸（意味で響き合う星同士）
+ threads.forEach(l=>{const a=nodeMap.get(l.a),b=nodeMap.get(l.b);
+  if(a&&b&&visible(a)&&visible(b))drawThread(a,b,!!(selected&&(selected.id===l.a||selected.id===l.b)))});
+ // 星座の線（キャッシュ済み座標を参照）
  constellationGroups.forEach(group=>{for(let i=1;i<group.length;i++){const a=group[i-1],b=group[i];
-  if(visible(a)&&visible(b))drawLine(a,b,selected&&selected.constellation_id===a.constellation_id)}});
- nodes.forEach(n=>{if(n.parent_id){const p=nodeBy(n.parent_id);
-  if(p&&visible(n)&&visible(p))drawLine(n,p,selected&&(selected.id===n.id||selected.id===p.id))}});
- const projected=nodes.map(n=>({n,p:sphere(n)})).map(o=>({...o,s:project(o.p)}));
+  if(visible(a)&&visible(b))drawLineP(a,b,selected&&selected.constellation_id===a.constellation_id)}});
+ // 親子の返信線（nodeMapでO(1)参照）
+ for(let i=0;i<nodes.length;i++){const n=nodes[i];if(n.parent_id){const p=nodeMap.get(n.parent_id);
+  if(p&&visible(n)&&visible(p))drawLineP(n,p,selected&&(selected.id===n.id||selected.id===p.id))}}
+ // 手前から奥へソートしてラベルの衝突判定
+ order.sort((a,b)=>b._p.z-a._p.z);
  const shown=[],showLabels=new Set();
- projected.slice().sort((a,b)=>b.p.z-a.p.z).forEach(o=>{
-  if(!visible(o.n)||o.p.z<=.05)return;
-  const important=selected&&selected.id===o.n.id;
-  const collides=shown.some(q=>Math.abs(q.x-o.s.x)<170&&Math.abs(q.y-o.s.y)<116);
-  if(important||!collides){showLabels.add(o.n.id);shown.push({x:o.s.x,y:o.s.y})}});
- projected.sort((a,b)=>a.p.z-b.p.z).forEach(({n,p,s})=>{
-  const el=labelEls.get(n.id),labelVisible=showLabels.has(n.id);
-  el.classList.toggle('hidden',!labelVisible||!visible(n));
-  el.classList.toggle('active',!!(selected&&selected.id===n.id));
-  if(!visible(n))return;
-  el.style.left=s.x+'px';el.style.top=s.y+'px';
-  const tagEl=el.querySelector('.tag');
-  if(tagEl)tagEl.textContent=filter!=='all'&&(n.tags||[]).includes(filter)?filter:((n.tags&&n.tags[0])||'未分類');
-  el.style.opacity=labelVisible?Math.min(1,.55+s.scale*.34):0;
+ for(let i=0;i<order.length;i++){const n=order[i];
+  if(!visible(n)||n._p.z<=.05)continue;
+  const important=selected&&selected.id===n.id;
+  let collides=false;
+  for(let j=0;j<shown.length;j++){if(Math.abs(shown[j].x-n._s.x)<170&&Math.abs(shown[j].y-n._s.y)<116){collides=true;break;}}
+  if(important||!collides){showLabels.add(n.id);shown.push({x:n._s.x,y:n._s.y})}}
+ // 奥から手前へ描画（星は重なり順、ラベルは表示分だけDOM更新）
+ order.sort((a,b)=>a._p.z-b._p.z);
+ for(let i=0;i<order.length;i++){const n=order[i],s=n._s,el=labelEls.get(n.id);
+  const vis=visible(n),labelVisible=vis&&showLabels.has(n.id);
+  if(labelVisible){
+   if(el._shown!==true){el.classList.remove('hidden');el._shown=true;}
+   el.style.left=s.x+'px';el.style.top=s.y+'px';
+   const tagEl=el.querySelector('.tag');
+   if(tagEl)tagEl.textContent=filter!=='all'&&(n.tags||[]).includes(filter)?filter:((n.tags&&n.tags[0])||'未分類');
+   el.style.opacity=Math.min(1,.55+s.scale*.34);
+  }else if(el._shown!==false){el.classList.add('hidden');el.style.opacity='0';el._shown=false;}
+  if(!vis)continue;
   const isSel=selected&&selected.id===n.id;
-  drawStar(s.x,s.y,Math.max(2.2,4.6*s.scale)*(isSel?1.5:1),color(n),isSel||p.z>.72)});
- requestAnimationFrame(render)}
-render();
-function select(id){selected=nodeBy(id);if(!selected)return;
+  drawStar(s.x,s.y,Math.max(2.2,4.6*s.scale)*(isSel?1.5:1),color(n),isSel||n._p.z>.72)}
+ rafId=requestAnimationFrame(render)}
+rafId=requestAnimationFrame(render);
+function flyTo(id){const n=nodeMap.get(id);if(!n)return;
+ rotY=-(n.lon||0)*Math.PI/180;
+ rotX=Math.max(-1.1,Math.min(1.1,(n.lat||0)*Math.PI/180));
+ select(id)}
+function select(id){selected=nodeBy(id);if(!selected)return;setActiveLabel(id);
  const constellation=selected.constellation_name?`<p class="meta">☄ ${escapeHtml(selected.constellation_name)}</p>`:'';
  const reply=selected.reply_to?`<p class="meta">↪ ${escapeHtml(selected.reply_to)}への返信</p>`:'';
+ const rel=threadsByStar.get(id)||[];
+ const relItems=rel.map(r=>{const p=nodeMap.get(r.id);if(!p)return '';
+  return `<button class="rel-item" data-id="${escapeHtml(r.id)}"><span class="rel-who">✧ ${escapeHtml(p.name)}の${STAR_TERM}</span>${r.reason?`<span class="rel-reason">── ${escapeHtml(r.reason)}</span>`:''}</button>`}).join('');
+ const relBlock=relItems?`<div class="rel"><b class="rel-h">響き合う${STAR_TERM}</b>${relItems}</div>`:'';
  detail.innerHTML=`<button class="close" aria-label="閉じる">×</button>
   <span class="pill">${escapeHtml(selected.constellation_name||(selected.tags&&selected.tags[0])||'未分類')}</span>
   <h2>${escapeHtml(selected.name)}の${STAR_TERM}</h2>${constellation}${reply}
   <p class="body">${escapeHtml(selected.body)}</p>
-  <p class="hint">気づきが生まれたら、そのまま公式LINEに送るだけで宇宙に反映されます。特定の星に応えたい時だけ、下の返信用テキストを使ってください。</p>
-  <div class="cmd"><span>この星に応える時だけ：返信:${escapeHtml(selected.id)} あなたの言葉</span><button id="copycmd">コピー</button></div>`;
+  ${relBlock}
+  <div class="detail-actions"><a class="btn-mini" href="${BASE}/star/${encodeURIComponent(selected.id)}">この${STAR_TERM}をひらく</a>
+  <a class="btn-mini" href="${BASE}/submit?parent_id=${encodeURIComponent(selected.id)}">声を寄せる</a></div>`;
  detail.classList.add('show');
- detail.querySelector('.close').onclick=()=>{selected=null;detail.classList.remove('show')};
- const cp=detail.querySelector('#copycmd');
- cp.onclick=()=>{const txt='返信:'+selected.id+' ';
-  if(navigator.clipboard&&navigator.clipboard.writeText){navigator.clipboard.writeText(txt).then(()=>{cp.textContent='コピーしました';setTimeout(()=>cp.textContent='コピー',1600)})}
-  else{cp.textContent=txt}}}
+ detail.querySelectorAll('.rel-item').forEach(btn=>{btn.onclick=()=>flyTo(btn.dataset.id)});
+ detail.querySelector('.close').onclick=()=>{selected=null;setActiveLabel(null);detail.classList.remove('show')};}
 canvas.addEventListener('pointerdown',e=>{drag=true;moved=false;last={x:e.clientX,y:e.clientY};canvas.setPointerCapture(e.pointerId)});
 canvas.addEventListener('pointermove',e=>{if(!drag)return;moved=true;
  rotY+=(e.clientX-last.x)*.006;rotX+=(e.clientY-last.y)*.006;
  rotX=Math.max(-1.1,Math.min(1.1,rotX));last={x:e.clientX,y:e.clientY}});
-canvas.addEventListener('pointerup',()=>{drag=false});
+canvas.addEventListener('pointerup',e=>{if(!moved){selected=null;setActiveLabel(null);detail.classList.remove('show')}drag=false;});
 canvas.addEventListener('wheel',e=>{e.preventDefault();zoom=Math.max(.74,Math.min(1.4,zoom-e.deltaY*.0007))},{passive:false});
 document.getElementById('zin').onclick=()=>zoom=Math.min(1.4,zoom+.08);
 document.getElementById('zout').onclick=()=>zoom=Math.max(.74,zoom-.08);
